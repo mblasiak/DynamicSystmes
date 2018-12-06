@@ -29,6 +29,8 @@ sim("model");
 plot(tout,x);
 title("Test plot");
 %%
+%!!!!!!!!!!!!!SET MANUAL SWITCH TO "STEP!!!!!!!
+
 %Autonomic system
 
 %If step=0 all the time, there is no external influeance in the system
@@ -57,6 +59,8 @@ legend("State","Control");
 % with starting V=WPC Cap capcity=C and resitor R
 
 %%
+%!!!!!!!!!!!!!SET MANUAL SWITCH TO "STEP!!!!!!!
+
 %WPC=0
 
 %Control=const
@@ -86,6 +90,8 @@ legend("State","Control/SOURCE");
 %Voltage at capacitor will equal source voltage in 'infinite time'
 
 %%
+%!!!!!!!!!!!!!SET MANUAL SWITCH TO "STEP!!!!!!!
+
 %Diffrent WPC with const controll
 
 %Control=const=1
@@ -100,7 +106,7 @@ C=1;
 K=1/(R*C);
 WPC=2;
 
-figure(3);
+figure(4);
 sim('model');
 plot(tout,x);
 xlabel("time");
@@ -115,6 +121,8 @@ legend("State","(Control/SOURCE)=1");
 %Voltage at capcitor will will get closer to source voltage during time
 %Voltage at capacitor will equal source voltage in 'infinite time'
 %%
+%!!!!!!!!!!!!!SET MANUAL SWITCH TO "STEP!!!!!!!
+
 %Control WPC=0 3->0
 
 %Control 3->0 at 5 
@@ -129,7 +137,7 @@ C=1;
 K=1/(R*C);
 WPC=0;
 
-figure(3);
+figure(5);
 sim('model');
 plot(tout,x);
 xlabel("time");
@@ -144,6 +152,35 @@ legend("State","(Control/SOURCE)=3-->0");
 %Voltage at capcitor will will get closer to source voltage during time
 %but after power source cut off,at 5. Cap volatge will drop dwon to 0 
 %%
+%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+%!!!!!!!!!!!!!SET MANUAL SWITCH TO "SIN WAVE"!!!!!!
+%--------------------------------------------------------------------
 
+%Sin as Controll
+
+%Control
+A=1;
+T=0.1;
+f=1/T;
+
+%Model Parameters
+R=0.5;
+C=0.3;
+K=1/(R*C);
+WPC=3;
+
+figure(6);
+sim('model');
+plot(tout,x);
+xlabel("time");
+ylabel("voltage");
+title("RC + U=Sin(t)");
+grid on;
+hold on;
+plot(tout,ste);
+legend("State","(Control/SOURCE)=Sin(t)");
+
+%Volatage on Cap will close to mean of source voltage and try to follow
+%voltage chnges in time
 
 
