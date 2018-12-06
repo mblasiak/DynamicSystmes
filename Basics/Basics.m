@@ -76,14 +76,42 @@ sim('model');
 plot(tout,x);
 xlabel("time");
 ylabel("voltage");
-title("RC + U=(CONST VOLATAGE SOURCE)");
+title("RC + U=(CONST VOLATAGE SOURCE)  (Empty Cap)");
 grid on;
 hold on;
 plot(tout,ste);
 legend("State","Control/SOURCE");
 %Model shows circuit with constant current source 
-%Capasitor fills up asymptoticly, 
+%Capasitor charges up asymptoticly, 
 %Voltage at capacitor will equal source voltage in 'infinite time'
 
 %%
+%Diffrent WPC with const controll
+
+%Control=const=1
+ts=0;
+s1=1;
+s2=1;
+
+
+%Model Parameters
+R=1;
+C=1;
+K=1/(R*C);
+WPC=2;
+
+figure(3);
+sim('model');
+plot(tout,x);
+xlabel("time");
+ylabel("voltage");
+title("RC + U=1 (Partially charged Cap)");
+grid on;
+hold on;
+plot(tout,ste);
+legend("State","(Control/SOURCE)=1");
+%Model shows circuit with constant current source 
+%Capasitor is charged to WPC, 
+%Voltage at capcitor will will get closer to source voltage during time
+%Voltage at capacitor will equal source voltage in 'infinite time'
 
