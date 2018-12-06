@@ -114,4 +114,36 @@ legend("State","(Control/SOURCE)=1");
 %Capasitor is charged to WPC, 
 %Voltage at capcitor will will get closer to source voltage during time
 %Voltage at capacitor will equal source voltage in 'infinite time'
+%%
+%Control WPC=0 3->0
+
+%Control 3->0 at 5 
+ts=5;
+s1=3;
+s2=0;
+
+
+%Model Parameters
+R=2;
+C=1;
+K=1/(R*C);
+WPC=0;
+
+figure(3);
+sim('model');
+plot(tout,x);
+xlabel("time");
+ylabel("voltage");
+title("RC + U=f(t) (Empty Cap)");
+grid on;
+hold on;
+plot(tout,ste);
+legend("State","(Control/SOURCE)=3-->0");
+%Model shows circuit with current source that changes at time=5 
+%Capasitor is empty, 
+%Voltage at capcitor will will get closer to source voltage during time
+%but after power source cut off,at 5. Cap volatge will drop dwon to 0 
+%%
+
+
 
