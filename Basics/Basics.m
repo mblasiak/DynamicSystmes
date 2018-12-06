@@ -23,9 +23,11 @@ ts=4;
 A=1;
 f=10;
 %%
+%Verify if model runns 
+figure(1);
 sim("model");
 plot(tout,x);
-
+title("Test plot");
 %%
 %Autonomic system
 
@@ -35,13 +37,53 @@ s2=0;
 
 
 %Model Parameters
-R=10;
-C=0.1;
+R=1;
+C=1;
 K=1/(R*C);
 WPC=5;
 
-
+figure(2);
 sim('model');
 plot(tout,x);
+xlabel("time");
+ylabel("voltage");
+title("RC circuit");
+grid on;
+hold on;
+plot(tout,ste);
+legend("State","Control");
 
+%Model discribes voltage change on capacitor in RC circuit,
+% with starting V=WPC Cap capcity=C and resitor R
+
+%%
+%WPC=0
+
+%Control=const
+ts=0;
+s1=5;
+s2=5;
+
+
+%Model Parameters
+R=1;
+C=1;
+K=1/(R*C);
+WPC=0;
+
+figure(3);
+sim('model');
+plot(tout,x);
+xlabel("time");
+ylabel("voltage");
+title("RC + U=(CONST VOLATAGE SOURCE)");
+grid on;
+hold on;
+plot(tout,ste);
+legend("State","Control/SOURCE");
+%Model shows circuit with constant current source 
+%Capasitor fills up asymptoticly, 
+%Voltage at capacitor will equal source voltage in 'infinite time'
+
+%%
 
