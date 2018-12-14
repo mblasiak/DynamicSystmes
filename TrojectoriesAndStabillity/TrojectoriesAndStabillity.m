@@ -21,37 +21,34 @@ P=eye(2);
 %J=[-1,0;0,0];
 
 %4 Wartość własna_1<0 własna_2<0 
-%J=[-1,0;0,-1];
+J=[-2,0;0,-1];
+%J=[-1,0;0,-5];
+
 
 %5 Wartość własna podwójna <0 dzielnik nieliniowy 
 %J=[-1,1;0,-1];
+%J=[-4,1;0,-4];
 
 %6 Wartość własna podwójna <0 dzielnik liniowy 
 %J=[-1,0;0,-1];
 
 %7  Wartość własna_1>0  własna_2 <0 
 %J=[-1,0;0,1];
+%J=[-3,0;0,1];
+
 
 %8 Para sprzężona Re=0
 %J=[0,1;-1,0];
 
 
 %9 Para sprzężona Re<0
-J=[-1,1;-1,-1];
-
-
-%Różne wartości własne
-%P=eye(2)*1;
-%P=eye(2)*2;
-%P=eye(2)*3;
-%P=eye(2)*4;
-%P=eye(2)*5;
+%J=[-1,1;-1,-1];
 
 
 
 %Rozne wektory własne
 %P=[1 1 ; 1 1];
-%P=[1 1 ; 0 1];
+P=[1 1 ; 0 1];
 %P=[1 0.5 ; 1 1];
 %P=[0 0 ; 1 1];
 
@@ -66,7 +63,11 @@ for z=0:0.1:(2*pi)
    
     WPC=[sin(z);cos(z)];
     sim('model');
-    
+    %Zmiana wartości własnych podczas rysowania
+    %if z>pi
+    %   J=[0,1;0,0];
+    %    A=P*J*P^-1;
+    %end
     %Dla niektórych wartoći warto użyć rysowania ze znacznikiem
     %plot(x(:,1),x(:,2),'blue-+')
     plot(x(:,1),x(:,2),'blue')
@@ -80,9 +81,7 @@ end
     hold on;
     plot([0 P(1,2)],[0 P(2,2)],'green');
     hold on;
-    %LEgend nie działa spytać!
-    %legend("","","Wektor Własny 1", "Wektor Własny 2");
-
+    
 
 subplot(1,2,2);
 for z=0:0.1:(2*pi)
@@ -100,12 +99,12 @@ for z=0:0.1:(2*pi)
     ylabel("x2");
     title("Portret Fazowy ");
     hold on;
-    plot([0 P(1,1)],[0 P(2,1)],'red');
+    
+end  
+
+plot([0 P(1,1)],[0 P(2,1)],'red');
     hold on;
     plot([0 P(1,2)],[0 P(2,2)],'green');
     hold on;
-end  
-
-
 
 
