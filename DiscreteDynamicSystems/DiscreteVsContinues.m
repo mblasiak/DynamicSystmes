@@ -44,10 +44,10 @@ B_c=[0;1];
 C_c=[1 0; 0 1];
 D_c=[0;0];
 
-h=0.01;
+h=1;
 
 %Using equation given in file
-A=expm(h*A);
+A=expm(h*A_c);
 %Define that z is symbolic
 syms z;
 %Int=Integral function in matlab from 0 to h using z(t) 
@@ -61,15 +61,27 @@ Start_c=Start;
 sim('model_2');
 
 
-%!!!!!!!!!!!!!!!!!SPYTAC !!!!! CHYBA POWINNY MIEC TEN SAM PRZEBIEG PRZEZ
 %CAŁY CZAS
 
 figure(2);
+subplot(1,2,1);
 plot(tout,x(:,1),'red');
 hold on;
-plot(tout,x(:,2),'blue');
-title("Discrete-Continues Syste,");
+plot(tout,x(:,3),'blue');
+title("Discrete-Continues x1(t),");
 legend('Continues','Discrete');
 xlabel("time t");
-ylabel("x(t)");
+ylabel("x1(t)");
+
+
+
+subplot(1,2,2);
+plot(tout,x(:,2),'red');
+hold on;
+plot(tout,x(:,4),'blue');
+
+title("Discrete-Continues x2(t)");
+legend('Continues','Discrete');
+xlabel("time t");
+ylabel("x2(t)");
 
