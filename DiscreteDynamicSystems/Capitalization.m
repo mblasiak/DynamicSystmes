@@ -2,29 +2,35 @@ clc;
 close all;
 clear;
 
-%intrest rat
+step_size=0.001;
 
+%intrest rate
 int_rate=0.04;
 
-total=1+int_rate;
+total_intrest=1+int_rate;
 
-A=total;
-%Zero controll
+A=total_intrest;
+%Zero controll infuleance
 B=0;
-%Make y=x
+%Make y=x 
 C=1;
-%Zero output controll
+%Zero output controll influance
 D=0;
 
-%Start capital
+%Starting balance
 Start=10000;
 
-all_caps=zeros(10);
+%Set rates to test
+rates=[1, 0.5,0.4, 0.3 , 0.2 , ];
+
+numb_of_rates=length(rates);
+%Calulate change of bank balance for every single rate
 names=repmat("Rate=",[1,10]);
-for i=1:10
-    cap_rate=1/i;
+for i=1:numb_of_rates
+    cap_rate=rates(i);
     h=cap_rate;
-    sim('model');
+    
+    sim('bank_model');
     plot(tout,x);
     hold on;
     names(i)=names(i)+num2str(cap_rate);
