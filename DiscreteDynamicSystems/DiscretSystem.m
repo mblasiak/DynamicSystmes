@@ -27,7 +27,7 @@ plot(tout,x);
 %
 
 %%
-%1
+%
 % x(k+1)=lamda*x(k)
 
 lamda=[-1.1, -1 , -0.7 ,-0.3, 0, 0.3 ,0.7, 1, 1.1];
@@ -41,7 +41,7 @@ B=0;
 C=1;
 %Zero output controll
 D=0;
-h=0.1;    
+h=1;    
 
 
 
@@ -57,7 +57,7 @@ for i=1:9
     figure(i);
 
     
-    plot(tout,x,'green');
+    plot(tout,x(:),'green');
     hold on;
     plot(tout,x_continues,'blue');
     hold off;
@@ -66,7 +66,7 @@ for i=1:9
     grid on;
     xlabel('time t');
     ylabel('x(t)');
-    axis([0 1.5  -20 20]);
+    axis([0 10  -50 50]);
     legend('Discrete Systme','Continues System');
     title({'Dynamic system with',['A=',num2str(lamda(i))],['x(0)=',num2str(Start)]});
 end
