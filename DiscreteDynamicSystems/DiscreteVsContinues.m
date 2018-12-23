@@ -45,6 +45,7 @@ C_c=[1 0; 0 1];
 D_c=[0;0];
 
 h=1;
+% h=1/2;
 
 %Using equation given in file
 A=expm(h*A_c);

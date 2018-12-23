@@ -21,11 +21,11 @@ D=0;
 Start=10000;
 
 %Set rates to test
-rates=[1, 0.5,0.4, 0.3 , 0.2 , ];
+rates=[1, 0.5,0.4, 0.3 , 0.2 ];
 
 numb_of_rates=length(rates);
 %Calulate change of bank balance for every single rate
-names=repmat("Rate=",[1,10]);
+names=repmat("Rate=",[1,length(rates)]);
 for i=1:numb_of_rates
     cap_rate=rates(i);
     h=cap_rate;
@@ -38,5 +38,7 @@ for i=1:numb_of_rates
 end
 title({'Bank balance',['Starting with=',num2str(Start)], ['Intrest Rate=' , num2str(int_rate),'%' ] });
 legend(names);
+xlabel('Time');
+ylabel('Account Balance');
 
 

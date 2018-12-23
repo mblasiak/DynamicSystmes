@@ -9,7 +9,7 @@ ite=5;
 eps=0.0000001;
 
 %Set staring point
-start=16;
+start=-1;
 
 %Equation in wich we search for solution
 equ=@(x) x^3-2*x^2-11*x+12;
