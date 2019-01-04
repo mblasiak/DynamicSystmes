@@ -7,6 +7,7 @@ clear;
 %Nominator Dominator
 N=[0 1];
 D=[1 1 2];
+roots(D)
 %Create Systme
 system=tf(N,D);
 
@@ -23,6 +24,7 @@ plot(-1,0,'');
 
 N=[1 0];
 D=[1 -0.1 2];
+roots(D)
 system=tf(N,D);
 
 figure;
