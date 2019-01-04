@@ -46,4 +46,4 @@ plot(tout,out(:,2));
 hold on;
 xlabel('time');
 ylabel('value');
-legend('Control','State')
+legend('Control','State');
