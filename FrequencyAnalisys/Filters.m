@@ -34,7 +34,7 @@ title('Upper Pass');
 
 figure;
 bode(fil_rangepass);
-title('Low Pass');
+title('Range Pass');
 
 figure;
 bode(fil_secnd);
@@ -77,6 +77,6 @@ for i=1:5
         ylabel('value');
         legend('Control','State');
         title(titles(z,:));
-        sgtitle('asas');
+        
         end
     end
